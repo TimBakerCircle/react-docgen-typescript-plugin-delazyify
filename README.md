@@ -1,16 +1,16 @@
 <div align="center">
   <img  height="200"
     src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/512px-React-icon.svg.png">
-  <h1>react-docgen-typescript-plugin</h1>
+  <h1>react-docgen-typescript-plugin-delazyify</h1>
   <p>A webpack plugin to inject react typescript docgen information</p>
 </div>
 
 ## Install
 
 ```sh
-npm install --save-dev react-docgen-typescript-plugin
+npm install --save-dev react-docgen-typescript-plugin-delazyify
 # or
-yarn add -D react-docgen-typescript-plugin
+yarn add -D react-docgen-typescript-plugin-delazyify
 ```
 
 ## Usage
@@ -20,7 +20,7 @@ yarn add -D react-docgen-typescript-plugin
 
 ```ts
 const ts = require("typescript");
-const { ReactDocgenTypeScriptPlugin } = require("react-docgen-typescript-plugin");
+const { ReactDocgenTypeScriptPlugin } = require("react-docgen-typescript-plugin-delazyify");
 
 module.exports = {
   plugins: [
@@ -77,6 +77,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
     <td align="center"><a href="https://github.com/meriouma"><img src="https://avatars.githubusercontent.com/u/1082552?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Maxime Meriouma-Caron</b></sub></a><br /><a href="#infra-meriouma" title="Infrastructure (Hosting, Build-Tools, etc)">🚇</a> <a href="https://github.com/hipstersmoothie/react-docgen-typescript-plugin/commits?author=meriouma" title="Tests">⚠️</a> <a href="https://github.com/hipstersmoothie/react-docgen-typescript-plugin/commits?author=meriouma" title="Code">💻</a></td>
     <td align="center"><a href="https://github.com/askoufis"><img src="https://avatars.githubusercontent.com/u/5663042?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Adam Skoufis</b></sub></a><br /><a href="https://github.com/hipstersmoothie/react-docgen-typescript-plugin/commits?author=askoufis" title="Code">💻</a></td>
     <td align="center"><a href="https://sorenstudios.com/"><img src="https://avatars.githubusercontent.com/u/295939?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Nicholas Narsing</b></sub></a><br /><a href="https://github.com/hipstersmoothie/react-docgen-typescript-plugin/commits?author=soren121" title="Documentation">📖</a> <a href="https://github.com/hipstersmoothie/react-docgen-typescript-plugin/commits?author=soren121" title="Tests">⚠️</a> <a href="https://github.com/hipstersmoothie/react-docgen-typescript-plugin/commits?author=soren121" title="Code">💻</a></td>
+    <td align="center"><a href="https://github.com/TimBakerCircle"><img src="https://avatars.githubusercontent.com/u/239700173?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Tim Baker</b></sub></a><br /><a href="https://github.com/TimBakerCircle/react-docgen-typescript-plugin-delazyify/commits?author=TimBakerCircle" title="Code">💻</a> <a href="https://github.com/TimBakerCircle/react-docgen-typescript-plugin-delazyify/commits?author=TimBakerCircle" title="Documentation">📖</a> <a href="#infra-TimBakerCircle" title="Infrastructure (Hosting, Build-Tools, etc)">🚇</a> <a href="#maintenance-TimBakerCircle" title="Maintenance">🚧</a> <a href="https://github.com/TimBakerCircle/react-docgen-typescript-plugin-delazyify/commits?author=TimBakerCircle" title="Tests">⚠️</a></td>
   </tr>
 </table>
 
