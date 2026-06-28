@@ -3,6 +3,7 @@ import fs from "node:fs";
 import path from "node:path";
 
 import { beforeAll, describe, expect, it } from "vitest";
+import ts from "typescript";
 import webpack, { type Configuration } from "webpack";
 
 import SourcePlugin from "../plugin";
@@ -117,6 +118,25 @@ describe("webpack plugin compatibility", () => {
 
     expect(result).not.toContain("SimpleComponent.__docgenInfo");
   }, 20_000);
+
+  it("supports modern TypeScript interop compiler options", async () => {
+    const { ReactDocgenTypeScriptPlugin } = require("../../dist");
+    const result = await compile(
+      getConfig(
+        new ReactDocgenTypeScriptPlugin({
+          compilerOptions: {
+            allowSyntheticDefaultImports: true,
+            esModuleInterop: true,
+            jsx: ts.JsxEmit.React,
+            module: ts.ModuleKind.CommonJS,
+            target: ts.ScriptTarget.Latest,
+          },
+        })
+      )
+    );
+
+    expect(result).toContain("SimpleComponent.__docgenInfo");
+  }, 20_000);
 });
 
 describe("custom options", () => {
@@ -146,6 +166,16 @@ describe("custom options", () => {
           );
         });
       }
+    );
+  });
+
+  it("preserves parsed tsconfig files for project-level docgen programs", () => {
+    const plugin = new SourcePlugin({
+      tsconfigPath: path.join(projectRoot, "tsconfig.json"),
+    });
+
+    expect(plugin.getOptions().fileNames).toContain(
+      path.join(projectRoot, "src/plugin.ts")
     );
   });
 });

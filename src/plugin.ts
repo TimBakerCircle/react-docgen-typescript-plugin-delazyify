@@ -5,7 +5,7 @@ import type * as docGen from "react-docgen-typescript";
 import type * as webpack from "webpack";
 
 import type { GeneratorOptions } from "./generateDocgenCodeBlock";
-import { registerDocgenLoaderOptions } from "./loader";
+import { clearDocgenLoaderCache, registerDocgenLoaderOptions } from "./loader";
 import type { LoaderOptions, PluginOptions } from "./types";
 
 type GenerateOptions = Pick<
@@ -17,6 +17,7 @@ type ResolvedOptions = {
   docgenOptions: docGen.ParserOptions;
   generateOptions: GenerateOptions;
   compilerOptions: ts.CompilerOptions;
+  fileNames: string[];
 };
 
 type NormalModuleResolveData = {
@@ -160,6 +161,8 @@ export default class DocgenPlugin implements webpack.WebpackPluginInstance {
     compiler.hooks.compilation.tap(
       this.name,
       (_compilation, { normalModuleFactory }) => {
+        clearDocgenLoaderCache(configId);
+
         normalModuleFactory.hooks.afterResolve.tap(
           this.name,
           (resolveData: NormalModuleResolveData) => {
@@ -207,6 +210,7 @@ export default class DocgenPlugin implements webpack.WebpackPluginInstance {
     } = this.options;
     const { defaultOptions } = DocgenPlugin;
 
+    let fileNames: string[] = [];
     let compilerOptions: ts.CompilerOptions = {
       jsx: ts.JsxEmit.React,
       module: ts.ModuleKind.CommonJS,
@@ -219,7 +223,10 @@ export default class DocgenPlugin implements webpack.WebpackPluginInstance {
         ...userCompilerOptions,
       };
     } else {
-      const { options: tsOptions } = getTSConfigFile(tsconfigPath);
+      const { fileNames: tsFileNames, options: tsOptions } =
+        getTSConfigFile(tsconfigPath);
+
+      fileNames = tsFileNames;
       compilerOptions = { ...compilerOptions, ...tsOptions };
     }
 
@@ -238,6 +245,7 @@ export default class DocgenPlugin implements webpack.WebpackPluginInstance {
         typePropName: typePropName ?? defaultOptions.typePropName,
       },
       compilerOptions,
+      fileNames,
     };
   }
 }
