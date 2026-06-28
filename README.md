@@ -15,9 +15,6 @@ yarn add -D react-docgen-typescript-plugin-delazyify
 
 ## Usage
 
-> NOTE: The TypeScript compiler options `allowSyntheticDefaultImports` and `esModuleInterop` will make
-> `react-docgen-typescript-plugin` a lot harder! Turn them off for faster build times.
-
 ```ts
 const ts = require("typescript");
 const { ReactDocgenTypeScriptPlugin } = require("react-docgen-typescript-plugin-delazyify");
@@ -35,7 +32,9 @@ module.exports = {
 ```
 
 This package targets webpack 5 and modern Node runtimes. Webpack and TypeScript
-are peer dependencies supplied by the consuming project.
+are peer dependencies supplied by the consuming project. The plugin uses your
+project `tsconfig.json` by default, including modern options such as
+`allowSyntheticDefaultImports` and `esModuleInterop`.
 
 ### Options
 
