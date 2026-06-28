@@ -12,8 +12,8 @@
       "esnext"
     ],
     "target": "ESNext",
-    "module": "Node16",
-    "moduleResolution": "Node16",
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
     "jsx": "react",
     "strict": true,
     "noEmit": true,
@@ -22,7 +22,6 @@
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
     "forceConsistentCasingInFileNames": true,
-    "skipLibCheck": true,
     "types": [
       "node",
       "vitest"

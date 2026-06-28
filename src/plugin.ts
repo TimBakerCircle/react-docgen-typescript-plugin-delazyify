@@ -100,7 +100,11 @@ function getTSConfigFile(tsconfigPath: string): ts.ParsedCommandLine {
       tsconfigPath
     );
   } catch {
-    return {} as ts.ParsedCommandLine;
+    return {
+      options: {},
+      fileNames: [],
+      errors: [],
+    };
   }
 }
 
