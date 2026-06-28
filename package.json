@@ -1,6 +1,6 @@
 {
   "name": "react-docgen-typescript-plugin-delazyify",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "A webpack plugin to inject React TypeScript docgen information without deprecated cache dependencies.",
   "license": "MIT",
   "repository": {
