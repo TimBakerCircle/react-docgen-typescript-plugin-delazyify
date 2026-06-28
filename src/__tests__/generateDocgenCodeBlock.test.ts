@@ -1,6 +1,7 @@
 import fs from "fs";
 import path from "path";
 import { parse, ParserOptions } from "react-docgen-typescript/lib/parser.js";
+import { describe, expect, it } from "vitest";
 import {
   generateDocgenCodeBlock,
   GeneratorOptions,
@@ -30,8 +31,10 @@ function loadFixtureTests(): GeneratorOptions[] {
 }
 
 const fixtureTests: GeneratorOptions[] = loadFixtureTests();
-const simpleFixture = fixtureTests.find((f) => f.filename === "Simple.tsx")!
-const displayNameFixture = fixtureTests.find((f) => f.filename === "DisplayName.tsx")!
+const simpleFixture = fixtureTests.find((f) => f.filename === "Simple.tsx")!;
+const displayNameFixture = fixtureTests.find(
+  (f) => f.filename === "DisplayName.tsx"
+)!;
 
 describe("component fixture", () => {
   fixtureTests.forEach((generatorOptions) => {

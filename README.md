@@ -19,20 +19,23 @@ yarn add -D react-docgen-typescript-plugin
 > `react-docgen-typescript-plugin` a lot harder! Turn them off for faster build times.
 
 ```ts
-const ts = require('typescript');
-const ReactDocgenTypescriptPlugin = require("react-docgen-typescript-plugin").default;
+const ts = require("typescript");
+const { ReactDocgenTypeScriptPlugin } = require("react-docgen-typescript-plugin");
 
 module.exports = {
   plugins: [
     // Will default to loading your root tsconfig.json
-    new ReactDocgenTypescriptPlugin(),
+    new ReactDocgenTypeScriptPlugin(),
     // or with a specific tsconfig
-    new ReactDocgenTypescriptPlugin({ tsconfigPath: "./tsconfig.dev.json" }),
+    new ReactDocgenTypeScriptPlugin({ tsconfigPath: "./tsconfig.dev.json" }),
     // or with compiler options
-    new ReactDocgenTypescriptPlugin({ compilerOptions: { jsx: ts.JsxEmit.Preserve } }),
+    new ReactDocgenTypeScriptPlugin({ compilerOptions: { jsx: ts.JsxEmit.Preserve } }),
   ],
 };
 ```
+
+This package targets webpack 5 and modern Node runtimes. Webpack and TypeScript
+are peer dependencies supplied by the consuming project.
 
 ### Options
 
@@ -47,22 +50,6 @@ This plugins support all parser options from [react-docgen-typescript](https://g
 | typePropName         | string         | Specify the name of the property for docgen info prop type.                                                                                         | `type`                    |
 | exclude              | glob[]         | Glob patterns to ignore and not generate docgen information for. (Great for ignoring large icon libraries)                                          | `[]`                        |
 | include              | glob[]         | Glob patterns to generate docgen information for                                                                                                    | `['**/**.tsx']`             |
-
-## Debugging
-
-If you want to see how this plugins is including and excluding modules set the `DEBUG` environment variable.
-
-- `DEBUG=docgen:*` - All logs
-- `DEBUG=docgen:include` - Included modules
-- `DEBUG=docgen:exclude` - Excluded modules
-- `DEBUG=docgen:docs` - Generated docs
-
-```bash
-DEBUG=docgen:* npm run storybook
-```
-
-> Another great way of debugging your generated docs is to use a `debugger` statement in your component source file.
-> If you turn off source maps you will be able to see the code that this package generates.
 
 ## Prior Art
 

@@ -1,26 +1,27 @@
 {
   "name": "react-docgen-typescript-plugin",
   "version": "2.0.0",
-  "description": "A webpack plugin to inject react typescript docgen information without a deprecated dependency.",
+  "description": "A webpack plugin to inject React TypeScript docgen information without deprecated cache dependencies.",
   "license": "MIT",
-  "repository": "timbakercircle/react-docgen-typescript-plugin-delazify",
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/TimBakerCircle/react-docgen-typescript-plugin-delazyify.git"
+  },
   "author": "Tim Baker <noreply@noreply>",
   "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
   "publishConfig": {
     "registry": "https://registry.npmjs.org/",
     "access": "public"
   },
   "scripts": {
-    "build:example": "npm run build && webpack",
     "build": "tsc -p tsconfig.build.json",
-    "start": "yarn build --watch",
-    "lint": "eslint src --ext .ts,.js",
-    "test": "npm run test:v4 && npm run test:v5",
-    "pretest:v4": "add-no-save @types/webpack ts-loader@8 webpack@4",
-    "test:v4": "jest",
-    "pretest:v5": "add-no-save webpack@5",
-    "test:v5": "jest",
-    "release": "auto shipit"
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "typecheck": "tsc -p tsconfig.json --noEmit"
   },
   "keywords": [
     "react",
@@ -29,58 +30,20 @@
     "webpack",
     "plugin"
   ],
-  "files": [
-    "dist"
-  ],
   "dependencies": {
-    "debug": "^4.1.1",
-    "find-cache-dir": "^3.3.1",
-    "flat-cache": "^3.0.4",
-    "micromatch": "^4.0.2",
-    "react-docgen-typescript": "^2.2.2",
-    "tslib": "^2.6.2"
+    "react-docgen-typescript": "^2.4.0"
   },
   "devDependencies": {
-    "@eslint/js": "^9.39.2",
-    "@stzhu/prettier-plugin-tsconfig": "^0.7.1",
-    "@trivago/prettier-plugin-sort-imports": "^6.0.2",
-    "@types/debug": "^4.1.12",
-    "@types/find-cache-dir": "^5.0.2",
-    "@types/flat-cache": "^2.0.2",
-    "@types/micromatch": "^4.0.10",
-    "@types/node": "^25.0.3",
+    "@types/node": "^26.0.1",
     "@types/react": "^19.2.7",
-    "auto": "^11.3.6",
-    "auto-config-hipstersmoothie": "^4.0.0",
-    "debug": "^4.4.3",
-    "eslint": "^9.39.2",
-    "eslint-config-prettier": "^10.1.8",
-    "eslint-plugin-import": "^2.32.0",
-    "eslint-plugin-jsdoc": "^62.0.0",
-    "eslint-plugin-n": "^17.0.0",
-    "eslint-plugin-prettier": "^5.5.4",
-    "eslint-plugin-vitest": "^0.5.4",
-    "find-cache-dir": "^6.0.0",
-    "flat-cache": "^6.1.19",
-    "globals": "^17.0.0",
-    "jiti": "^2.6.1",
-    "micromatch": "^4.0.8",
-    "prettier": "^3.7.4",
     "react": "^19.2.3",
-    "react-docgen-typescript": "^2.4.0",
     "ts-loader": "^9.5.4",
-    "tsup": "^8.5.1",
     "typescript": "6.0.3",
-    "typescript-eslint": "^8.52.0",
     "vitest": "^4.0.16",
-    "webpack": "^5.104.1",
-    "webpack-cli": "^6.0.1"
+    "webpack": "^5.104.1"
   },
   "peerDependencies": {
-    "typescript": ">= 5.x",
-    "webpack": ">= 5"
-  },
-  "auto": {
-    "extends": "hipstersmoothie"
+    "typescript": ">=5",
+    "webpack": ">=5"
   }
 }
